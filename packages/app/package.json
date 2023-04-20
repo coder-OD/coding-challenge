@@ -26,7 +26,7 @@
     "@cosmjs/stargate": "0.28.4",
     "@cosmology/core": "^0.4.0",
     "@cosmology/cosmos-registry": "^0.0.13",
-    "@cosmology/react": "^0.0.9",
+    "@cosmology/react": "^0.0.10",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11",
     "@keplr-wallet/cosmos": "^0.10.3",

@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-import Pools from '../components/pools-list';
+import Assets from "../components/assets-list";
+import Pools from "../components/pools-list";
+import { Provider, rootStore } from "../store";
 
 export default function Index() {
-  return (<>
-    <Pools />
-  </>
+  return (
+    <Provider value={rootStore}>
+      <Assets />
+      <Pools />
+    </Provider>
   );
 }
