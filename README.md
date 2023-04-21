@@ -3,8 +3,39 @@
 ## deliverables
 
 1. mobx `Asset` store
+  - addAsset
+  - updateAsset
+  - removeAsset
 2. mobx `Pool` store
+  - addPool
 3. UI to add data (optional)
+  - assets table
+  - error handling when addPool with assets length less than 2
+
+## screen capture
+
+Initial page
+
+<img width="1677" alt="image" src="https://user-images.githubusercontent.com/32189106/233556215-26cdfcf2-164d-4fce-b185-75cfc5c88bc2.png">
+
+Error handling
+
+<img width="1223" alt="image" src="https://user-images.githubusercontent.com/32189106/233557485-8faeccd5-aeaf-46bb-96d6-f635b6da3309.png">
+
+Follow below steps for testing updateAsset & addPool case:
+1. Click the "name" cell and update it
+2. Then click the "Add pool"
+3. Assets table will remove last 2 items and put them into pools data, and the "name" has been update.
+
+<img width="1111" alt="image" src="https://user-images.githubusercontent.com/32189106/233557171-69aa80db-72c7-44e0-ac33-f3b598c602b1.png">
+
+
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/32189106/233557110-71304ac9-fa10-4a27-a489-0e70b07f98dd.png">
+
+
+
+
+
 ## instructions
 
 You'll be working in `./packages/app`. The goal is to use mobx stores and display the data in a user interface.
