@@ -14,6 +14,10 @@
 
 ## screen capture
 
+Code changes
+
+<img width="396" alt="image" src="https://user-images.githubusercontent.com/32189106/233562556-c2983f45-44ac-4fe0-ba7d-866d3c9be938.png">
+
 Initial page
 
 <img width="1677" alt="image" src="https://user-images.githubusercontent.com/32189106/233556215-26cdfcf2-164d-4fce-b185-75cfc5c88bc2.png">
