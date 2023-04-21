@@ -29,7 +29,7 @@ Error handling
 Follow below steps for testing updateAsset & addPool case:
 1. Click the "name" cell and update it
 2. Then click the "Add pool"
-3. Assets table will remove last 2 items and put them into pools data, and the "name" has been update.
+3. Assets table will remove last 2 items and put them into pools data, and the "name" has been updated.
 
 <img width="1111" alt="image" src="https://user-images.githubusercontent.com/32189106/233557171-69aa80db-72c7-44e0-ac33-f3b598c602b1.png">
 
