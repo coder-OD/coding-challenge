@@ -1,9 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import cloneDeep from "lodash/cloneDeep";
-import remove from "lodash/remove";
+import uniqueId from "lodash/uniqueId";
 
 import { Asset } from "@chain-registry/types/types/assets";
 import { PoolsData } from "../@types/pool";
+import {
+  getRandomPoolLiquidity,
+  getRandomMyLiquidity,
+  getRandomAPR,
+} from "../utils";
 
 export class PoolS {
   poolsData: PoolsData[] = [];
@@ -14,15 +19,22 @@ export class PoolS {
 
   addPool = (asset1: Asset, asset2: Asset) => {
     const poolCard: PoolsData = {
-      // id: string;
-      // token1: { name: string; imgSrc: string };
-      // token2: { name: string; imgSrc: string };
-      // poolLiquidity: number;
-      // apr: number;
-      // myLiquidity: number;
-      // myBoundedAmount: number;
-      // longestDaysUnbonding: boolean;
-    }
+      id: uniqueId("pool_"),
+      token1: {
+        name: asset1.name,
+        imgSrc: asset1.logo_URIs.png ?? asset1.logo_URIs.svg,
+      },
+      token2: {
+        name: asset2.name,
+        imgSrc: asset2.logo_URIs.png ?? asset2.logo_URIs.svg,
+      },
+      poolLiquidity: getRandomPoolLiquidity(),
+      apr: getRandomAPR(),
+      myLiquidity: getRandomMyLiquidity(),
+      myBoundedAmount: getRandomMyLiquidity(),
+      longestDaysUnbonding: Math.random() < 0.5,
+    };
+    this.poolsData = this.poolsData.concat(poolCard);
   };
 }
 export type PoolStore = typeof PoolS;

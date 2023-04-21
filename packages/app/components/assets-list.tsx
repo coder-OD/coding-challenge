@@ -18,6 +18,9 @@ import {
   Box,
   Button,
   Stack,
+  HStack,
+  Divider,
+  Text,
 } from "@chakra-ui/react";
 
 import { chain, asset_list } from "@chain-registry/osmosis";
@@ -28,18 +31,6 @@ import set from "lodash/set";
 
 import { useStore } from "../store";
 
-console.log("asset_list==========", asset_list);
-interface PoolsData {
-  id: string;
-  token1: { name: string; imgSrc: string };
-  token2: { name: string; imgSrc: string };
-  poolLiquidity: number;
-  apr: number;
-  myLiquidity: number;
-  myBoundedAmount: number;
-  longestDaysUnbonding: boolean;
-}
-
 const ListAssets = observer(() => {
   const { assetStore } = useStore();
   const { addAsset, updateAsset, removeAsset, assets } = assetStore;
@@ -47,7 +38,7 @@ const ListAssets = observer(() => {
   const assetsRef = useRef<Asset[]>([]);
   const [assetIndex, setAssetIndex] = useState<number>(0);
 
-  const editCell = (item: Asset, key: string, nextValue: string, ) => {
+  const editCell = (item: Asset, key: string, nextValue: string) => {
     console.log("nextValue", nextValue);
     const newItem: Asset = set(item, key, nextValue);
     updateAsset(newItem);
@@ -93,7 +84,7 @@ const ListAssets = observer(() => {
                 <Box>
                   <Editable
                     defaultValue={item.name}
-                    onChange={(v) => editCell(item, "name", v)}
+                    onSubmit={(v) => editCell(item, "name", v)}
                   >
                     <EditablePreview />
                     <EditableInput />
@@ -104,12 +95,42 @@ const ListAssets = observer(() => {
                 <Box>
                   <Editable
                     defaultValue={item.base}
-                    onChange={(v) => editCell(item, "base", v)}
+                    onSubmit={(v) => editCell(item, "base", v)}
                   >
                     <EditablePreview />
                     <EditableInput />
                   </Editable>
                 </Box>
+              </Td>
+              <Td>
+                <HStack spacing="24px">
+                  <Box>denom_units[0].exponent</Box>
+                  <Box>
+                    <Editable
+                      defaultValue={item.denom_units[0].exponent?.toString()}
+                      onSubmit={(v) =>
+                        editCell(item, "denom_units[0].exponent", v)
+                      }
+                    >
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Box>
+                </HStack>
+                <HStack spacing="24px">
+                  <Box>denom_units[1].exponent</Box>
+                  <Box>
+                    <Editable
+                      defaultValue={item.denom_units[1].exponent?.toString()}
+                      onSubmit={(v) =>
+                        editCell(item, "denom_units[1].exponent", v)
+                      }
+                    >
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Box>
+                </HStack>
               </Td>
               {/* <Td>
                 <Box>
@@ -137,6 +158,8 @@ const ListAssets = observer(() => {
         <Button colorScheme="teal" size="md" onClick={addItem}>
           Add asset item
         </Button>
+        {/* <Divider orientation="vertical" /> */}
+        <Text>This click event will insert the asset item into the front of table.</Text>
       </Stack>
       <Table variant="simple">
         <TableCaption>Imperial to metric conversion factors</TableCaption>
@@ -145,6 +168,7 @@ const ListAssets = observer(() => {
             <Th>Logo</Th>
             <Th>Name</Th>
             <Th>Base</Th>
+            <Th>Exponent</Th>
             {/* <Th>Description</Th> */}
             <Th>Action</Th>
           </Tr>
